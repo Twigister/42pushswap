@@ -6,7 +6,7 @@
 /*   By: arlarzil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:17:21 by arlarzil          #+#    #+#             */
-/*   Updated: 2023/12/12 22:04:03 by arlarzil         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:38:50 by arlarzil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,6 @@ static int	get_best_scenario(t_four_scenarios *s)
 	return (res);
 }
 
-		/*dump_it(a, b);
-		//__builtin_printf("C po min ou max %d\n", a->l[index]);
-		// while (b->l[index_b % b->i] > a->l[index] ||
-		// 	b->l[(index_b - 1) % b->i] < a->l[index])*/
 static void	calc_cost(t_list *a, t_list *b, int index, t_four_scenarios *s)
 {
 	int	index_b;
@@ -107,9 +103,12 @@ static void	calc_and_execute_cheapest(t_list *a, t_list *b)
 
 void	sort_first_phase(t_list *a, t_list *b)
 {
+	int	target;
+
+	target = a->i / 8;
 	pb(a, b, 1);
 	if (a->i > 3)
 		pb(a, b, 1);
-	while (a->i > 3)
+	while (a->i > target)
 		calc_and_execute_cheapest(a, b);
 }

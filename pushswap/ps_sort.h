@@ -14,11 +14,7 @@
 # define PS_SORT_H
 
 # include <pushswap.h>
-
-typedef struct s_instruction_list {
-	void						(*fun)(t_list *, t_list);
-	struct s_instructio_list	*next;
-}	t_instruction_list;
+# define TARGET 100
 
 enum e_scenarios {
 	RARB,
@@ -27,7 +23,6 @@ enum e_scenarios {
 	RRARRB
 };
 
-// On pourra par la suite utiliser sa pour gagner qques opérations
 typedef struct s_four_scenarios {
 	int	ra_c;
 	int	rb_c;
@@ -36,14 +31,8 @@ typedef struct s_four_scenarios {
 	int	best_scenario;
 	int	len;
 }	t_four_scenarios;
-// Les 4 scenarions consistent en :	+ optimisé d'utiliser rr/ra/rb
-// 									+ optimisé d'utiliser ra/rrb
-// 									+ optimisé d'utiliser rra/rb
-// 									+ optimisé d'utiliser rrr/rra/rrb
 
-// On peut faire un code plus compact en utlisant seulement 2 variables
-// pour "Op stack A et op stack b, mais pas sûr de l'efficacité
-
+// Algos
 void	ps_sort(t_list *a, t_list *b);
 void	sort_first_phase(t_list *a, t_list *b);
 void	sort_second_phase(t_list *a, t_list *b);
@@ -52,6 +41,8 @@ void	sort_second_phase(t_list *a, t_list *b);
 void	ft_swap_ptr(void **a, void **b);
 int		ft_abs(int n);
 int		ft_min(int a, int b);
+int		get_smallest(t_list *l);
+int		get_pos(int n, t_list *l);
 
 int		is_minmax(int n, t_list *l);
 void	execute_scenario(t_list *a, t_list *b, t_four_scenarios *s);

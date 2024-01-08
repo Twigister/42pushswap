@@ -6,7 +6,7 @@
 /*   By: arlarzil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 05:30:31 by arlarzil          #+#    #+#             */
-/*   Updated: 2023/12/13 02:15:25 by arlarzil         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:13:43 by arlarzil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void	final_phase(t_list *a)
 
 void	sort_second_phase(t_list *a, t_list *b)
 {
+	if (a->i == 0)
+		pa(a, b, 1);
 	while (b->i)
 		calc_and_execute_cheapest(a, b);
 	final_phase(a);

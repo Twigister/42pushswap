@@ -19,7 +19,7 @@ static void	sort2(t_list *a)
 		sa(a, NULL, 1);
 }
 
-static void	sort3(t_list *a)
+void	sort3(t_list *a)
 {
 	if (a->l[2] > a->l[1] && a->l[1] < a->l[0] && a->l[2] < a->l[0])
 		sa(a, NULL, 1);
@@ -27,6 +27,23 @@ static void	sort3(t_list *a)
 		sa(a, NULL, 1);
 	else if (a->l[2] < a->l[1] && a->l[1] > a->l[0] && a->l[2] < a->l[0])
 		sa(a, NULL, 1);
+}
+
+static void	sort_target(t_list *a, t_list *b)
+{
+	int	pos;
+
+	while (a->i > 3)
+	{
+		pos = get_pos(get_smallest(a), a);
+		if (pos == 0)
+			pb(a, b, 1);
+		else if (pos >= a->i / 2)
+			rra(a, b, 1);
+		else
+			ra(a, b, 1);
+	}
+	sort3(a);
 }
 
 void	replace_number_by_indexes(int len, int *list, int *cur)
@@ -57,8 +74,8 @@ void	ps_sort(t_list *a, t_list *b)
 		return ;
 	}
 	replace_number_by_indexes(a->i, a->l, a->l);
-	if (a->i > 3)
+	if (a->i > 5)
 		sort_first_phase(a, b);
-	sort3(a);
+	sort_target(a, b);
 	sort_second_phase(a, b);
 }

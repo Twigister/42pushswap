@@ -39,7 +39,7 @@ SRC_PUSHSWAP 	=	main			\
 					first_phase_bis	\
 					second_phase	\
 					utils			\
-					debug			\
+					array_info		\
 
 SRC_TO_FILENAME_COMMON		= $(addsuffix .c, $(addprefix $(SRC_COMMON_DIR), $(SRC_COMMON)))
 SRC_TO_FILENAME_CHECKER		= $(addsuffix .c, $(addprefix $(SRC_CHECKER_DIR), $(SRC_CHECKER)))
