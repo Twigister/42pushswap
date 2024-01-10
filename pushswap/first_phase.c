@@ -106,6 +106,8 @@ void	sort_first_phase(t_list *a, t_list *b)
 	int	target;
 
 	target = a->i / 8;
+	if (target < 3)
+		target = 3;
 	pb(a, b, 1);
 	if (a->i > 3)
 		pb(a, b, 1);
